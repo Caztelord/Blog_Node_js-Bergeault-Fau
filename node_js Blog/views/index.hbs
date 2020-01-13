@@ -1,0 +1,65 @@
+{{#if logged_in}}
+    <div class="header">
+        <h2>Blog story time</h2>
+    </div>
+    <br>
+
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Votre compte</button>
+
+    <div id="id01" class="modal">
+        <form class="modal-content animate" action ="/action_page" method="post">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            </div>
+
+            <div class="container">
+                <h1> Vos informations </h1>
+                <h2> Votre email: {{email}}{</h2>
+                <h3> Votre pseudo: {{user}}</h3>
+                <h4> Votre status: {{status}}</h4>
+                <input type="button" value="Modifier vos informations">
+            </div>
+        </form>
+
+    </div>
+    {{#if logged_as_admin}}
+    <a href="create_article" type="button" class="bouton3" >Crée un article</a>
+
+
+    {{/if}}
+    <div class="row">
+        <div class="leftcolumn">
+            {{test}}
+            {{#each info}}
+            <div class="card">
+                <h2>{{Titre}}</h2>
+                <h3>{{listetag}}</h3>
+                <h5>{{Date}}</h5>
+                <p>
+                    {{Articles}}
+                </p>
+                <p class="Autheur">{{Auteur}}</p>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="footer">
+        <h2>Bas de Page</h2>
+    </div>
+{{else}}
+    <div class="login-box">
+        <h1>Bienvenue !</h1>
+        <form method="post">
+            <p>Username</p>
+            <input type="text" name="username" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Enter Password">
+
+            <input class="bouton1" value="Se connecter" type="submit"/>
+
+            <a href="/page_inscription" class="bouton2" name="bouton2" value="Crée votre compte" type="button">s'incsrire</a>
+        </form>
+    </div>
+
+{{/if}}
